@@ -7,9 +7,9 @@ import cv2
 import glob
 import pandas as pd
 from PIL import Image
+from typing import Tuple,List
 
-
-def prepare_dataframe(originpath):
+def prepare_dataframe(originpath:str):
     imtrain = glob.glob(os.path.join(originpath, "*png"))
     print(f"there are {len(imtrain)} images ")
 
@@ -69,7 +69,7 @@ def yolo2dota(x, y, w, h, W, H):
     return x1, y1, x2, y2
 
 
-def keeplabel(rangepropose, label, tresh=0.5):
+def keeplabel(rangepropose:Tuple, label:List, tresh=0.5):
     """
     We only keep labels where x,y are in the picture. If 50% of aera of bounding box is out of picture we do not label
 
@@ -87,7 +87,7 @@ def keeplabel(rangepropose, label, tresh=0.5):
     return 1
 
 
-def newlabel(rangepropose, label):
+def newlabel(rangepropose:Tuple, label:List):
     """
     we need label adapted for the tile
 
@@ -97,11 +97,11 @@ def newlabel(rangepropose, label):
     return x1 - xmin, y1 - ymin, x2 - xmin, y2 - ymin
 
 
-def get_bbox(df, filename):
+def get_bbox(df:pd.DataFrame, filename:str):
     return df[df['filename'] == filename].bbox.to_list()
 
 
-def tuile_convertYOLO(filename, path, dest, size, df, recover=0.5,RGB=True):
+def tuile_convertYOLO(filename:str, path:str, dest:str, size:int, df:pd.DataFrame, recover:float=0.5,RGB=True):
     """
      making tile from big picture
     """
