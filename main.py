@@ -44,7 +44,7 @@ if __name__ == '__main__':
     val_split = os.path.join(destsplit, "val")
     if maketile:
         print(f"creating tile of size {tilesize} ...")
-        make_tile(train_yolo, val_yolo, train_split, val_split, origdata)
+        make_tile(train_yolo, val_yolo, train_split, val_split, origdata,tilesize=tilesize)
         print("done ! ")
 
     if withdraw:

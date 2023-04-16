@@ -4,7 +4,7 @@ import pandas as pd
 import os
 
 
-def make_tile(train_yolo:str, val_yolo:str, train_split:str, val_split:str, orig_path:str):
+def make_tile(train_yolo:str, val_yolo:str, train_split:str, val_split:str, orig_path:str,tilesize:int):
     os.system(f'mkdir -p {train_yolo}/images')
     os.system(f'mkdir -p {train_yolo}/labels')
     os.system(f'mkdir -p {val_yolo}/images')
@@ -20,7 +20,7 @@ def make_tile(train_yolo:str, val_yolo:str, train_split:str, val_split:str, orig
         tuile_convertYOLO(filename=filetrain,
                           path=train_split,
                           dest=train_yolo,
-                          size=640,
+                          size=tilesize,
                           df=df,
                           recover=0.5,
                           RGB=True)
@@ -29,7 +29,7 @@ def make_tile(train_yolo:str, val_yolo:str, train_split:str, val_split:str, orig
         tuile_convertYOLO(filename=fileval,
                           path=val_split,
                           dest=val_yolo,
-                          size=640,
+                          size=tilesize,
                           df=df,
                           recover=0.5,
                           RGB=True)
@@ -43,4 +43,4 @@ if __name__ == "__main__":
     val_split = "pathtoyourproject/shipdetection/data/split/val"
     orig_path = "pathtoyourproject/shipdetection/data/original/train/"
 
-    make_tile(train_yolo, val_yolo, train_split, val_split, orig_path)
+    make_tile(train_yolo, val_yolo, train_split, val_split, orig_path,tilesize=640)
