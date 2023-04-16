@@ -22,7 +22,7 @@ def make_tile(train_yolo:str, val_yolo:str, train_split:str, val_split:str, orig
                           dest=train_yolo,
                           size=640,
                           df=df,
-                          recover=0.2,
+                          recover=0.5,
                           RGB=True)
 
     for fileval in tqdm(val_list):
@@ -31,7 +31,7 @@ def make_tile(train_yolo:str, val_yolo:str, train_split:str, val_split:str, orig
                           dest=val_yolo,
                           size=640,
                           df=df,
-                          recover=0.2,
+                          recover=0.5,
                           RGB=True)
 
 
