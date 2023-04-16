@@ -1,6 +1,6 @@
 # 2nd ship detection challenge - Huggingface
 
-![image.jpg](./images/image.jpg)
+![image.jpg](./images/image.png)
 
 Training a yolov8 on ship detection from aerial images.
 
